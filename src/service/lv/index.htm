@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Вулиці Львіва</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="streets.js"></script>
+</head>
+
+<body onload="init()" style="font-family:arial">
+	Літери:<input type="text" value="" id="input_symbols" size="14"/>
+	<input type='button' onclick='search_streets()' value='go'/>
+	<br>
+	Частина: <input type="text" value="" id="input_part" size="14"/>
+	<input type='button' onclick='search_streets_by_part()' value='go'/>
+   <div id="result_div"></div>
+</body>
+</html>
