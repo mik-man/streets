@@ -1,7 +1,7 @@
 'use strict';
 
 var textAllStreets = `
-<br/> Напишить щось.
+<br/> Напишіть щось.
 <p style="font-size:0.8rem"><a href="..">інше місто</a></p>`
 
 function search_streets() {
