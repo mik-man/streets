@@ -1,6 +1,8 @@
 'use strict';
 
-var textAllStreets = "<br> Всі вулиці..."
+var textAllStreets = `
+<br/> Напишить щось.
+<p style="font-size:0.8rem"><a href="..">інше місто</a></p>`
 
 function search_streets() {
 	var searchSymbols = document.getElementById('input_symbols').value;
@@ -11,9 +13,9 @@ function search_streets() {
 	}
 
 	var resultText = "";
-	
-	for (var i=0; i<streets.length; i++) {
-		if (checkStreet(streets[i], searchSymbols)) {	
+
+	for (var i = 0; i < streets.length; i++) {
+		if (checkStreet(streets[i], searchSymbols)) {
 			resultText = resultText + "<br>" + streets[i];
 		};
 	};
@@ -25,11 +27,11 @@ function checkStreet(street, searchSymbols) {
 	var iof;
 	street = street.toLowerCase();
 	searchSymbols = searchSymbols.toLowerCase();
-	
-	for (var i=0; i<searchSymbols.length; i++) {
+
+	for (var i = 0; i < searchSymbols.length; i++) {
 		iof = street.indexOf(searchSymbols.charAt(i));
 		if (iof == -1) return false;
-		street = street.slice(0,iof) + street.slice(iof+1);
+		street = street.slice(0, iof) + street.slice(iof + 1);
 	};
 
 	return true;
@@ -44,9 +46,9 @@ function search_streets_by_part() {
 	}
 
 	var resultText = "";
-	
-	for (var i=0; i<streets.length; i++) {
-		if (checkStreetPart(streets[i], searchPart)) {	
+
+	for (var i = 0; i < streets.length; i++) {
+		if (checkStreetPart(streets[i], searchPart)) {
 			resultText = resultText + "<br>" + streets[i];
 		};
 	};
@@ -56,8 +58,8 @@ function search_streets_by_part() {
 
 function checkStreetPart(street, searchPart) {
 	street = street.toLowerCase();
-	searchPart = searchPart.toLowerCase();	
-	if (street.indexOf(searchPart) == -1) return false;	
+	searchPart = searchPart.toLowerCase();
+	if (street.indexOf(searchPart) == -1) return false;
 	return true;
 }
 
