@@ -3,11 +3,11 @@
 <html>
 
 <head>
-	<title>Вулиці Запоріжжя</title>
+	<title>Улицы Запорожья</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="icon" type="image/ico" href="../favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="../style.css" />
-	<script type="text/javascript" src="../main.js"></script>
+	<link rel="icon" type="image/ico" href="../../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../style.css" />
+	<script type="text/javascript" src="../../main.js"></script>
 	<script type="text/javascript" src="streets.js"></script>
 	<script> store.city = 'Запоріжжя' </script>
 </head>
@@ -15,21 +15,21 @@
 <body onload="init()">
 	<table>
 		<tr>
-			<td>Букви:</td>
+			<td>Буквы:</td>
 			<td><input type="text" value="" id="input_symbols" size="14" />
 				<input type='button' onclick='search_streets()' value=' go ' /></td>
 		</tr>
 		<tr>
-			<td>Частина:</td>
+			<td>Часть:</td>
 			<td><input type="text" value="" id="input_part" size="14" />
 				<input type='button' onclick='search_streets_by_part()' value=' go ' /></td>
 		</tr>
 	</table>
 	<div id="div_result"></div>
-	<div id="div_empty">
-		<br /> Напишіть щось.
-		<p style="font-size:0.8rem"><a href="./ru/index.html">ru (old names)</a></p>
-		<p style="font-size:0.8rem"><a href="../index.html">інше місто</a></p>
+	<div id="div_empty" style="display: none;">
+		<br /> Напишите что-нибудь.
+		<p style="font-size:0.8rem"><a href="../index.html">ua (actual names)</a></p>
+		<p style="font-size:0.8rem"><a href="../../index.html">інше місто</a></p>
 	</div>
 </body>
 
