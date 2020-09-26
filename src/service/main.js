@@ -7,13 +7,9 @@ var store = {
 };
 
 function search_streets() {
-	const { textAllStreets } = store;
-	var searchSymbols = document.getElementById('input_symbols').value;
-
-	if (searchSymbols == "") {
-		document.getElementById('result_div').innerHTML = textAllStreets;
-		return;
-	}
+	const searchSymbols = document.getElementById('input_symbols').value;
+	checkIsAnySymbols(searchSymbols);
+	if (searchSymbols === '') return;
 
 	let resultText = "";
 	for (let i = 0; i < streets.length; i++) {
@@ -21,15 +17,13 @@ function search_streets() {
 			resultText = addStreet(resultText, i);
 		};
 	};
-
-	document.getElementById('result_div').innerHTML = resultText;
+	document.getElementById('div_result').innerHTML = resultText;
 }
 
 function checkStreet(street, searchSymbols) {
-	var iof;
 	street = street.toLowerCase();
 	searchSymbols = searchSymbols.toLowerCase();
-
+	let iof;
 	for (let i = 0; i < searchSymbols.length; i++) {
 		iof = street.indexOf(searchSymbols.charAt(i));
 		if (iof == -1) return false;
@@ -40,13 +34,9 @@ function checkStreet(street, searchSymbols) {
 }
 
 function search_streets_by_part() {
-	const { textAllStreets } = store;
 	const searchPart = document.getElementById('input_part').value;
-
-	if (searchPart == "") {
-		document.getElementById('result_div').innerHTML = textAllStreets;
-		return;
-	}
+	checkIsAnySymbols(searchPart);
+	if (searchPart === '') return;
 
 	let resultText = "";
 	for (let i = 0; i < streets.length; i++) {
@@ -55,7 +45,7 @@ function search_streets_by_part() {
 		};
 	};
 
-	document.getElementById('result_div').innerHTML = resultText;
+	document.getElementById('div_result').innerHTML = resultText;
 }
 
 function checkStreetPart(street, searchPart) {
@@ -71,7 +61,7 @@ function init() {
 	input_element.onkeyup = search_streets;
 	var input_part = document.getElementById('input_part');
 	input_part.onkeyup = search_streets_by_part;
-	document.getElementById('result_div').innerHTML = textAllStreets;
+	checkIsAnySymbols('');
 }
 
 function addStreet(text, index) {
@@ -80,4 +70,14 @@ function addStreet(text, index) {
 	const href = `"https://maps.google.com/?q=${city}, ${street}"`;
 	return `${text} <br> <a class="street" href=${href} target="_blank"> ${street} </a>`;
 	// <a href="https://maps.google.com/?q=Запорожье, Фучика Юлиуса" target="_blank">Фучика Юлиуса</a>
+}
+
+function checkIsAnySymbols(searchSymbols) {
+	const divEmpty = document.getElementById('div_empty');
+	if (searchSymbols !== '') {
+		divEmpty.style.display = 'none';
+		return;
+	}
+	divEmpty.style.display = 'block';
+	document.getElementById('div_result').innerHTML = '<br/>';
 }
