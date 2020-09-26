@@ -3,12 +3,12 @@
 */
 
 import { readFile, writeFile } from 'fs';
-var ver = 'ver-01'
+var ver = 'zp-ver-03'
 console.log(ver);
 main();
 
 function main() {
-  const csvf = 'streets8.csv';
+  const csvf = 'zp/zp-streets.csv';
   // задолбался в попытках прочитать файл в кодировке "windows-1251" (streets.csv),
   // поэтому просто пересохранил файл в utf8 (streets8.csv)
   readFile(csvf, (err, data) => {
@@ -29,10 +29,16 @@ function main() {
 function arr2s(arr) {
   let a = '';
   for (let i = 1; i < arr.length; i++) {
-    if (arr[i].length > 0) {
-      a = `${a},\n"${arr[i]}"`;
+    const streetName = clearStreetName(arr[i]);
+    if (streetName.length > 0) {
+      a = `${a},\n"${streetName}"`;
     }
   }
   a = `var streets = ["${arr[0]}"${a}]`; //first item has no comma and new line
   return a;
+}
+
+function clearStreetName(dirtyName) {
+  // delete spaces (beg-end) and double quotes
+  return dirtyName.trim().replace(/"/g,'');
 }
